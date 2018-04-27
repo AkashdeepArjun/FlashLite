@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="basics" default="all">
+  
+  
+  <property file="basics.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.9" value="${jdk.home.9}/bin"/>
+  <path id="jdk.classpath.9">
+    <fileset dir="${jdk.home.9}">
+      <include name="../java-9-jdk!/java.activation"/>
+      <include name="../java-9-jdk!/java.base"/>
+      <include name="../java-9-jdk!/java.compiler"/>
+      <include name="../java-9-jdk!/java.corba"/>
+      <include name="../java-9-jdk!/java.datatransfer"/>
+      <include name="../java-9-jdk!/java.desktop"/>
+      <include name="../java-9-jdk!/java.instrument"/>
+      <include name="../java-9-jdk!/java.jnlp"/>
+      <include name="../java-9-jdk!/java.logging"/>
+      <include name="../java-9-jdk!/java.management"/>
+      <include name="../java-9-jdk!/java.management.rmi"/>
+      <include name="../java-9-jdk!/java.naming"/>
+      <include name="../java-9-jdk!/java.prefs"/>
+      <include name="../java-9-jdk!/java.rmi"/>
+      <include name="../java-9-jdk!/java.scripting"/>
+      <include name="../java-9-jdk!/java.se"/>
+      <include name="../java-9-jdk!/java.se.ee"/>
+      <include name="../java-9-jdk!/java.security.jgss"/>
+      <include name="../java-9-jdk!/java.security.sasl"/>
+      <include name="../java-9-jdk!/java.smartcardio"/>
+      <include name="../java-9-jdk!/java.sql"/>
+      <include name="../java-9-jdk!/java.sql.rowset"/>
+      <include name="../java-9-jdk!/java.transaction"/>
+      <include name="../java-9-jdk!/java.xml"/>
+      <include name="../java-9-jdk!/java.xml.bind"/>
+      <include name="../java-9-jdk!/java.xml.crypto"/>
+      <include name="../java-9-jdk!/java.xml.ws"/>
+      <include name="../java-9-jdk!/java.xml.ws.annotation"/>
+      <include name="../java-9-jdk!/javafx.base"/>
+      <include name="../java-9-jdk!/javafx.controls"/>
+      <include name="../java-9-jdk!/javafx.deploy"/>
+      <include name="../java-9-jdk!/javafx.fxml"/>
+      <include name="../java-9-jdk!/javafx.graphics"/>
+      <include name="../java-9-jdk!/javafx.media"/>
+      <include name="../java-9-jdk!/javafx.swing"/>
+      <include name="../java-9-jdk!/javafx.web"/>
+      <include name="../java-9-jdk!/jdk.accessibility"/>
+      <include name="../java-9-jdk!/jdk.aot"/>
+      <include name="../java-9-jdk!/jdk.attach"/>
+      <include name="../java-9-jdk!/jdk.charsets"/>
+      <include name="../java-9-jdk!/jdk.compiler"/>
+      <include name="../java-9-jdk!/jdk.crypto.cryptoki"/>
+      <include name="../java-9-jdk!/jdk.crypto.ec"/>
+      <include name="../java-9-jdk!/jdk.deploy"/>
+      <include name="../java-9-jdk!/jdk.deploy.controlpanel"/>
+      <include name="../java-9-jdk!/jdk.dynalink"/>
+      <include name="../java-9-jdk!/jdk.editpad"/>
+      <include name="../java-9-jdk!/jdk.hotspot.agent"/>
+      <include name="../java-9-jdk!/jdk.httpserver"/>
+      <include name="../java-9-jdk!/jdk.incubator.httpclient"/>
+      <include name="../java-9-jdk!/jdk.internal.ed"/>
+      <include name="../java-9-jdk!/jdk.internal.jvmstat"/>
+      <include name="../java-9-jdk!/jdk.internal.le"/>
+      <include name="../java-9-jdk!/jdk.internal.opt"/>
+      <include name="../java-9-jdk!/jdk.internal.vm.ci"/>
+      <include name="../java-9-jdk!/jdk.internal.vm.compiler"/>
+      <include name="../java-9-jdk!/jdk.jartool"/>
+      <include name="../java-9-jdk!/jdk.javadoc"/>
+      <include name="../java-9-jdk!/jdk.javaws"/>
+      <include name="../java-9-jdk!/jdk.jcmd"/>
+      <include name="../java-9-jdk!/jdk.jconsole"/>
+      <include name="../java-9-jdk!/jdk.jdeps"/>
+      <include name="../java-9-jdk!/jdk.jdi"/>
+      <include name="../java-9-jdk!/jdk.jdwp.agent"/>
+      <include name="../java-9-jdk!/jdk.jfr"/>
+      <include name="../java-9-jdk!/jdk.jlink"/>
+      <include name="../java-9-jdk!/jdk.jshell"/>
+      <include name="../java-9-jdk!/jdk.jsobject"/>
+      <include name="../java-9-jdk!/jdk.jstatd"/>
+      <include name="../java-9-jdk!/jdk.localedata"/>
+      <include name="../java-9-jdk!/jdk.management"/>
+      <include name="../java-9-jdk!/jdk.management.agent"/>
+      <include name="../java-9-jdk!/jdk.management.cmm"/>
+      <include name="../java-9-jdk!/jdk.management.jfr"/>
+      <include name="../java-9-jdk!/jdk.management.resource"/>
+      <include name="../java-9-jdk!/jdk.naming.dns"/>
+      <include name="../java-9-jdk!/jdk.naming.rmi"/>
+      <include name="../java-9-jdk!/jdk.net"/>
+      <include name="../java-9-jdk!/jdk.pack"/>
+      <include name="../java-9-jdk!/jdk.packager"/>
+      <include name="../java-9-jdk!/jdk.packager.services"/>
+      <include name="../java-9-jdk!/jdk.plugin"/>
+      <include name="../java-9-jdk!/jdk.plugin.dom"/>
+      <include name="../java-9-jdk!/jdk.plugin.server"/>
+      <include name="../java-9-jdk!/jdk.policytool"/>
+      <include name="../java-9-jdk!/jdk.rmic"/>
+      <include name="../java-9-jdk!/jdk.scripting.nashorn"/>
+      <include name="../java-9-jdk!/jdk.scripting.nashorn.shell"/>
+      <include name="../java-9-jdk!/jdk.sctp"/>
+      <include name="../java-9-jdk!/jdk.security.auth"/>
+      <include name="../java-9-jdk!/jdk.security.jgss"/>
+      <include name="../java-9-jdk!/jdk.snmp"/>
+      <include name="../java-9-jdk!/jdk.unsupported"/>
+      <include name="../java-9-jdk!/jdk.xml.bind"/>
+      <include name="../java-9-jdk!/jdk.xml.dom"/>
+      <include name="../java-9-jdk!/jdk.xml.ws"/>
+      <include name="../java-9-jdk!/jdk.zipfs"/>
+      <include name="../java-9-jdk!/oracle.desktop"/>
+      <include name="../java-9-jdk!/oracle.net"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.9}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.9}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.9"/>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="jgoodies-forms.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/module_basics.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.basics" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.basics" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="480.0" prefWidth="852.0" styleClass="anchor" stylesheets="@Home_Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home">
+   <children>
+      <Button fx:id="detect_button" layoutX="252.0" layoutY="136.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="348.0" style="-fx-background-radius: 20; -fx-background-color: brown;" text="Detect System" textFill="#ebe1e1">
+         <font>
+            <Font size="31.0" />
+         </font>
+         <effect>
+            <Reflection />
+         </effect>
+      </Button>
+      <ImageView fx:id="detect_signal" fitHeight="104.0" fitWidth="104.0" layoutX="45.0" layoutY="346.0" nodeOrientation="INHERIT" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image_reference/accepted.png" />
+         </image></ImageView>
+      <ImageView fx:id="error_signal" fitHeight="104.0" fitWidth="104.0" layoutX="45.0" layoutY="346.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image_reference/error.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="flash_button" layoutX="252.0" layoutY="220.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="348.0" style="-fx-background-radius: 20; -fx-background-color: brown;" text="Flash System" textFill="#ebe1e1">
+         <effect>
+            <Reflection />
+         </effect>
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Button>
+      <Text fx:id="detected_message" layoutX="260.0" layoutY="437.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: green;" text="SYSTEM ONLINE" wrappingWidth="486.7294921875">
+         <font>
+            <Font name="Ubuntu Light" size="42.0" />
+         </font>
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </Text>
+   </children>
+</AnchorPane>

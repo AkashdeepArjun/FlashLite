@@ -1,0 +1,15 @@
+
+.anchor
+{
+
+
+
+    -fx-background-image: url("image_reference/flash_home.jpg");
+}
+.circlebutton
+{
+
+    -fx-border-radius: 20px
+    ;
+
+}

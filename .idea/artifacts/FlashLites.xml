@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="FlashLites">
+    <output-path>$USER_HOME$/Desktop/Projects</output-path>
+    <root id="root">
+      <element id="archive" name="FlashLite.jar">
+        <element id="module-output" name="Basics" />
+      </element>
+    </root>
+  </artifact>
+</component>

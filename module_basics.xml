@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_basics" default="compile.module.basics">
+  <dirname property="module.basics.basedir" file="${ant.file.module_basics}"/>
+  
+  <property name="module.jdk.home.basics" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.basics" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.basics" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.basics" value="-encoding UTF-8 -source 9 -target 9 ${compiler.args}"/>
+  
+  <property name="basics.output.dir" value="${module.basics.basedir}/out/production/Basics"/>
+  <property name="basics.testoutput.dir" value="${module.basics.basedir}/out/test/Basics"/>
+  
+  <path id="basics.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="basics.module.production.classpath">
+    <path refid="${module.jdk.classpath.basics}"/>
+  </path>
+  
+  <path id="basics.runtime.production.module.classpath">
+    <pathelement location="${basics.output.dir}"/>
+  </path>
+  
+  <path id="basics.module.classpath">
+    <path refid="${module.jdk.classpath.basics}"/>
+    <pathelement location="${basics.output.dir}"/>
+  </path>
+  
+  <path id="basics.runtime.module.classpath">
+    <pathelement location="${basics.testoutput.dir}"/>
+    <pathelement location="${basics.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.basics">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.basics">
+    <patternset refid="excluded.from.module.basics"/>
+  </patternset>
+  
+  <path id="basics.module.sourcepath">
+    <dirset dir="${module.basics.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.basics" depends="compile.module.basics.production,compile.module.basics.tests" description="Compile module Basics"/>
+  
+  <target name="compile.module.basics.production" depends="register.custom.compilers" description="Compile module Basics; production classes">
+    <mkdir dir="${basics.output.dir}"/>
+    <javac2 destdir="${basics.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.basics}/javac">
+      <compilerarg line="${compiler.args.basics}"/>
+      <bootclasspath refid="basics.module.bootclasspath"/>
+      <classpath refid="basics.module.production.classpath"/>
+      <src refid="basics.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.basics"/>
+    </javac2>
+    
+    <copy todir="${basics.output.dir}">
+      <fileset dir="${module.basics.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.basics.tests" depends="register.custom.compilers,compile.module.basics.production" description="compile module Basics; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.basics" description="cleanup module">
+    <delete dir="${basics.output.dir}"/>
+    <delete dir="${basics.testoutput.dir}"/>
+  </target>
+</project>

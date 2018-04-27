@@ -1,0 +1,22 @@
+.text-area
+
+{
+
+
+        -fx-text-fill: green;
+
+
+}
+
+
+.text-area .content
+
+{
+
+
+
+-fx-background-color: black;
+
+
+}
+
